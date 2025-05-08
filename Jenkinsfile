@@ -6,6 +6,7 @@ pipeline {
                 echo 'Setup PYATS environment'
                 sh 'python3 -m venv pyats'
                 sh 'source pyats/bin/activate'
+                sh 'pip3 install dotenv'
             }
         }
         stage('List files cloned from Git') {
