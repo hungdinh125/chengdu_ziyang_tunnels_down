@@ -42,6 +42,7 @@ def get_tunnels_down(appliance_name, appliance_id, tunnel_list):
         "Accept": "application/json",
         "X-Auth-Token": auth_token,
     }
+    ignored_list = ["to_Azure-West-US2-ECV-2_INET1-INET1"]
     try:
         response = requests.get(url, headers=headers, verify=False, timeout=30)
         response.raise_for_status()
@@ -49,7 +50,10 @@ def get_tunnels_down(appliance_name, appliance_id, tunnel_list):
 
         for tunnel_id, tunnel_info in tunnels.items():
             tunnel_name = tunnel_info.get("alias")
-            if tunnel_name in tunnel_list:
+            if tunnel_name in ignored_list:
+                print(f"INFO: On {appliance_name}, the tunnel {tunnel_name} is DOWN, but ignored.")
+            
+            elif tunnel_name in tunnel_list:
                 #print(f"WARNING: On {appliance_name}, the tunnel {tunnel_name} is DOWN.")
                 teams_webhook_url = "https://aligntech.webhook.office.com/webhookb2/7ed9a6c7-e811-4e71-956c-9e54f8b7d705@9ac44c96-980a-481b-ae23-d8f56b82c605/JenkinsCI/9ecff2f044b44cfcae37b0376ecd1540/9d21b513-f4ee-4b3b-995c-7a422a087a6c/V2-0LzN76qekmVrAPO1b9pX-4MwxVsHKo7lbMnV_iHFb81"
                 message = {
