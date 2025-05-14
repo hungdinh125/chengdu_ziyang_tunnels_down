@@ -42,7 +42,7 @@ def get_tunnels_down(appliance_name, appliance_id, tunnel_list):
         "Accept": "application/json",
         "X-Auth-Token": auth_token,
     }
-    ignored_list = ["to_Azure-West-US2-ECV-2_INET1-INET1"]
+    ignored_list = ["to_Azure-West-US2-ECV-2_INET1-INET1" "to_GCP-USW4-ECV-1_INET1-INET1"]
     try:
         response = requests.get(url, headers=headers, verify=False, timeout=30)
         response.raise_for_status()
