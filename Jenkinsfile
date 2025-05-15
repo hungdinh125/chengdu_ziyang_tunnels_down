@@ -6,7 +6,6 @@ pipeline {
                 echo 'Setup PYATS environment'
                 sh 'python3 -m venv pyats'
                 sh 'source pyats/bin/activate'
-                sh 'pip3 install dotenv'
             }
         }
         stage('List files cloned from Git') {
@@ -15,12 +14,22 @@ pipeline {
                 sh 'ls -la'                
             }
         }
+        stage('Copy baseline file into workspace') {
+            steps {
+                sh 'cp /var/lib/jenkins/baseline_tunnels.txt ./baseline_tunnels.txt'
+            }
+        }
         stage('Run the Python script for Chengdu and Ziyang') {
             steps {
                 echo 'Activate Python script to check tunnels down'
                 sh 'python3 chengdu_ziyang_tunnels.py'                
             }
         }
+        stage('Copy updated baseline back to home') {
+            steps {
+                sh 'cp baseline_tunnels.txt /var/lib/jenkins/baseline_tunnels.txt'
+            }
+        }        
     }
     post {
         always {
