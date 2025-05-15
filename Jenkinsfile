@@ -19,6 +19,18 @@ pipeline {
                 sh 'cp /var/lib/jenkins/baseline_tunnels.txt ./baseline_tunnels.txt'
             }
         }
+        stage('Confirm file is copied') {
+            steps {
+                echo 'Confirm baseline_tunnels.txt is cloned'
+                sh 'ls -la'                
+            }
+        }
+        stage('Display baseline_tunnels.txt') {
+            steps {
+                echo 'View content of baseline_tunnels.txt '
+                sh 'cat baseline_tunnels.txt'                
+            }
+        }
         stage('Run the Python script for Chengdu and Ziyang') {
             steps {
                 echo 'Activate Python script to check tunnels down'
