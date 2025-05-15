@@ -14,21 +14,9 @@ pipeline {
                 sh 'ls -la'                
             }
         }
-        stage('Copy baseline file into workspace') {
+        stage('Install dotenv') {
             steps {
-                sh 'cp /var/lib/jenkins/baseline_tunnels.txt ./baseline_tunnels.txt'
-            }
-        }
-        stage('Confirm file is copied') {
-            steps {
-                echo 'Confirm baseline_tunnels.txt is cloned'
-                sh 'ls -la'                
-            }
-        }
-        stage('Display baseline_tunnels.txt') {
-            steps {
-                echo 'View content of baseline_tunnels.txt '
-                sh 'cat baseline_tunnels.txt'                
+                sh 'pip3 install dotenv'
             }
         }
         stage('Run the Python script for Chengdu and Ziyang') {
@@ -36,12 +24,7 @@ pipeline {
                 echo 'Activate Python script to check tunnels down'
                 sh 'python3 chengdu_ziyang_tunnels.py'                
             }
-        }
-        stage('Copy updated baseline back to home') {
-            steps {
-                sh 'cp baseline_tunnels.txt /var/lib/jenkins/baseline_tunnels.txt'
-            }
-        }        
+        }     
     }
     post {
         always {
