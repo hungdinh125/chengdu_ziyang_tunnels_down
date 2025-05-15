@@ -103,7 +103,7 @@ if __name__ == "__main__":
     iltela02sp01 --> 158.NE
     iltela02sp02 --> 159.NE
     """
-    chengdu_dest_list = ["82.NE", "83.NE", "101.NE", "102.NE", "90.NE", "91.NE", "95.NE", "96.NE", "156.NE", "157.NE", "12.NE", "13.NE", "43.NE", "44.NE", "27.NE"]
+    chengdu_dest_list = ["82.NE", "83.NE", "101.NE", "102.NE", "90.NE", "91.NE", "95.NE", "96.NE", "156.NE", "157.NE", "12.NE", "13.NE", "43.NE", "44.NE"]
     chengdu_tunnel_list = get_tunnel_list("145.NE", chengdu_dest_list)
     # Display the tunnel list for debugging
     #print(chengdu_tunnel_list)
@@ -112,15 +112,15 @@ if __name__ == "__main__":
     get_tunnels_down("cnchen02sp01", "145.NE", chengdu_tunnel_list)
 
     # Check the tunnels on Chengdu Treat SP02, ID "146.NE"
-#    get_tunnels_down("cnchen02sp02", "146.NE", chengdu_tunnel_list)
+    get_tunnels_down("cnchen02sp02", "146.NE", chengdu_tunnel_list)
 
-#    ziyang_dest_list = ["82.NE", "83.NE", "101.NE", "102.NE", "90.NE", "91.NE", "95.NE", "96.NE", "156.NE", "157.NE", "12.NE", "13.NE", "43.NE", "44.NE", "41.NE", "42.NE", "158.NE", "159.NE"]
-#    ziyang_tunnel_list = get_tunnel_list("141.NE", ziyang_dest_list)
+    ziyang_dest_list = ["82.NE", "83.NE", "101.NE", "102.NE", "90.NE", "91.NE", "95.NE", "96.NE", "156.NE", "157.NE", "12.NE", "13.NE", "43.NE", "44.NE", "41.NE", "42.NE", "158.NE", "159.NE"]
+    ziyang_tunnel_list = get_tunnel_list("141.NE", ziyang_dest_list)
     # Display the tunnel list for debugging
     #print(ziyang_tunnel_list)
 
     # Check the tunnels on Ziyang Treat SP01, ID "141.NE"
-#    get_tunnels_down("cnzyng02sp01", "141.NE", ziyang_tunnel_list)
+    get_tunnels_down("cnzyng02sp01", "141.NE", ziyang_tunnel_list)
 
     # Check the tunnels on Ziyang Treat SP02, ID "142.NE"
-#    get_tunnels_down("cnzyng02sp02", "142.NE", ziyang_tunnel_list)
+    get_tunnels_down("cnzyng02sp02", "142.NE", ziyang_tunnel_list)
